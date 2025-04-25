@@ -6,6 +6,7 @@ import com.trabalho.faculdade.products.infrastructure.persistence.ProductReposit
 import com.trabalho.faculdade.products.web.dto.product.request.ProductRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,7 @@ public class RegisterProductUseCaseImpl implements RegisterProductUseCase {
 
     private final ProductRepository productRepository;
     private final ModelMapper modelMapper;
+
 
     @Override
     public void execute(ProductRequestDto productRequestDto) {
