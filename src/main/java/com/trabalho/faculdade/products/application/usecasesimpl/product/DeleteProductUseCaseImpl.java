@@ -14,7 +14,7 @@ public class DeleteProductUseCaseImpl implements DeleteProductUseCase {
 
     @Override
     public void execute(Long code) {
-        Product product = this.productRepository.findById(code)
+        Product product = this.productRepository.findByCode(code)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
 
         this.productRepository.delete(product);

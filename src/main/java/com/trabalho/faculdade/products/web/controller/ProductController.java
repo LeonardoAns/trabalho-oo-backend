@@ -1,6 +1,7 @@
 package com.trabalho.faculdade.products.web.controller;
 
 import com.trabalho.faculdade.products.core.usecases.product.*;
+import com.trabalho.faculdade.products.web.dto.product.request.ChangeProductRequestDto;
 import com.trabalho.faculdade.products.web.dto.product.request.ProductRequestDto;
 import com.trabalho.faculdade.products.web.dto.product.response.ProductResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ public class ProductController {
 
     @GetMapping("/get/{code}")
     public ResponseEntity<ProductResponseDto> getProductByCode(@PathVariable("code") Long code) {
-        ProductResponseDto product = this.getProductByCodeUseCase.execute(id);
+        ProductResponseDto product = this.getProductByCodeUseCase.execute(code);
         return ResponseEntity.ok(product);
     }
 
@@ -45,7 +46,7 @@ public class ProductController {
     }
 
     @PutMapping("/change/{code}")
-    public ResponseEntity<Void> changeProduct(@RequestBody ProductRequestDto productRequestDto, @PathVariable("code") Long code) {
+    public ResponseEntity<Void> changeProduct(@RequestBody ChangeProductRequestDto productRequestDto, @PathVariable("code") Long code) {
         this.changeProductUseCase.execute(productRequestDto, code);
         return ResponseEntity.ok().build();
     }
